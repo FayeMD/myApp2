@@ -35,13 +35,34 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       controller: 'LoginCtrl'
   })
 
+
+
   // setup an abstract state for the tabs directive
-    .state('tab', {
+.state('tab', {
     url: "/tab",
     abstract: true,
     templateUrl: "templates/tabs.html"
   })
 
+.state('tab.post1', {
+      url: '/post1',
+      views: {
+        'tab-post1': {
+        templateUrl: 'templates/tab-post1.html',
+        controller: 'Post1Ctrl'
+      }
+      }
+})
+
+.state('tab.postDesire', {
+      url: '/postDesire',
+      views: {
+        'tab-postDesire': {
+        templateUrl: 'templates/tab-postDesire.html',
+        controller: 'PostDesireCtrl'
+      }
+      }
+})
   // Each tab has its own nav history stack:
 
   .state('tab.profile', {
