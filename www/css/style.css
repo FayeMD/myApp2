@@ -2,3 +2,50 @@
 	margin-left: 0px !important;
 	margin-right: 0px !important;
 }
+
+#feelings {
+	width: 100%;
+	float: left;
+	margin-top: 2px;
+	padding-top: 2px;
+	border-top: 1px solid #0C8138;
+}
+
+
+.appreciates {
+	color: #9B9B9B;
+	float: left;
+}
+
+.comments {
+	color: #9B9B9B;
+	float: right;
+}
+
+.buttonD {
+	margin-top: 35px;
+	padding: 5%;
+	border: 3px solid #0C8138;
+	background-color: #fff;
+	color: #0C8138;
+	height: 120px;
+	width: 100%;
+}
+
+.buttonG {
+	margin-top: 15px;
+	padding: 5%;
+	background-color: #33CD5F;
+	color: #fff;
+	height: 120px;
+	width: 100%;
+}
+
+.buttonC {
+	margin-top: 15px;
+	padding: 5%;
+	background-color: #0C8138;
+	color: #fff;
+	height: 120px;
+	width: 100%;
+}

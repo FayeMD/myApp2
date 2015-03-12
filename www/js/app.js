@@ -57,9 +57,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 .state('tab.postDesire', {
       url: '/postDesire',
       views: {
-        'tab-postDesire': {
-        templateUrl: 'templates/tab-postDesire.html',
-        controller: 'PostDesireCtrl'
+       'tab-post1': {
+       templateUrl: 'templates/tab-postDesire.html',
+       controller: 'PostDesireCtrl'
+      }
+      }
+})
+
+.state('tab.postGratitude', {
+      url: '/postGratitude',
+      views: {
+       'tab-post1': {
+       templateUrl: 'templates/tab-postGratitude.html',
+       controller: 'PostGratitudeCtrl'
+      }
+      }
+})
+
+.state('tab.postChallenge', {
+      url: '/postChallenge',
+      views: {
+       'tab-post1': {
+       templateUrl: 'templates/tab-postChallenge.html',
+       controller: 'PostChallengeCtrl'
       }
       }
 })

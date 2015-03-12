@@ -37,6 +37,26 @@ angular.module('starter.controllers', [])
     }
 })
 
+.controller('PostGratitudeCtrl', function($scope, $ionicPopup, $state) {
+    $scope.data = {};
+
+    $scope.postGratitude = function() {
+        //LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
+            $state.go('tab.postGratitude');
+        //})
+    }
+})
+
+.controller('PostChallengeCtrl', function($scope, $ionicPopup, $state) {
+    $scope.data = {};
+
+    $scope.postChallenge = function() {
+        //LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
+            $state.go('tab.postChallenge');
+        //})
+    }
+})
+
 .controller('LocationCtrl', function($scope, $state) {
 
   // PLEASE NOTE:  you must install the apache cordova geolocation plugin for this to function.
