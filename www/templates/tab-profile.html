@@ -1,9 +1,9 @@
-<ion-view view-title="IGGY">
+<ion-view view-title='{{data.profile.username}}'>
 
 <ion-content class="padding"> 
 
 <div class="row">
-  <div class="col-33"><img src="http://media4.popsugar-assets.com/files/2014/07/24/082/n/1922398/bdbe2c1b9ddbbf42_thumb_temp_image10906271406249584/i/Iggy-Azalea-Headlines-Video.jpg"></div>
+  <div class="col-33"><img style="width: 100px; height: 100px" src="http://media4.popsugar-assets.com/files/2014/07/24/082/n/1922398/bdbe2c1b9ddbbf42_thumb_temp_image10906271406249584/i/Iggy-Azalea-Headlines-Video.jpg"></div>
     <div class="col-67">
 
      <div class="button-bar">
@@ -28,6 +28,24 @@
   <a class="button button-small button-royal">challenge</a>
 </div>
 
+<p ng-show="!data.profile.posts.length">
+  No Posts Yet...
+</p>
+
+<div class="feelings" ng-repeat="post in data.profile.posts">
+    <div class="content">
+      <strong>{{data.profile.username}}'s</strong> <span class="label-{{post.type}}">{{post.type}}</span>: 
+      <br>{{post.post}}
+    </div>
+
+    <div>
+          <div class="appreciates">Appreciates</div>
+          <div class="comments">Comments</div>
+    </div>
+</div>
+
+
+<!--
 <div id="feelings">
     <div class="content">
       <strong>IGGY's</strong> <span style="color: #fff; background-color: #0C8138">challenge</span>: 
@@ -99,18 +117,7 @@
       <div class="comments">Comments</div>
   
 </section>
-
-<div id="feelings">
-    <div class="content">
-      <strong>IGGY's</strong> <span style="color: #fff; background-color: #0C8138">challenge</span>: 
-      <br>Not happy with Eminem
-    </div>
-
-<div>
-      <div class="appreciates">Appreciates</div>
-      <div class="comments">Comments</div>
-</div>
-</div>
+-->
 
 
 </ion-view>

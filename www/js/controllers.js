@@ -1,10 +1,34 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngStorage'])
 
-.controller('ProfileCtrl', function($scope) {})
-
-.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
+.controller('ProfileCtrl', function($scope, $localStorage, $http) {
   $scope.data = {};
 
+  if($localStorage.hasOwnProperty("userid") !== true) {
+    $state.go('login');
+  }
+  else {
+    $http.get("http://104.236.249.215:3000/profile/" + $localStorage.userid).then(function(result) {
+               
+               if (result.data.status == "error") {
+                  alert("There was a problem getting your profile.  Check the logs for details.");
+               }
+               else {
+
+                 $scope.data.profile = result.data;
+
+              }
+           }, function(error) {
+               alert("There was a problem getting your profile.  Check the logs for details.");
+               console.log(error);
+           });
+  }
+})
+
+.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state, $localStorage) {
+  $scope.data = {};
+  if($localStorage.hasOwnProperty("userid") === true) {
+    $state.go('tab.profile');
+  }
   $scope.login = function() {
     LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
             $state.go('tab.profile');
@@ -27,33 +51,82 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('PostDesireCtrl', function($scope, $ionicPopup, $state) {
+.controller('PostDesireCtrl', function($scope, $ionicPopup, $state, $localStorage, $http) {
     $scope.data = {};
 
     $scope.postDesire = function() {
-        //LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-            $state.go('tab.postDesire');
-        //})
+      if($scope.data.desire == ""){
+        alert("Please Enter Desire");
+      }
+      else {
+        $http.post("http://104.236.249.215:3000/makepost", { type: 'desire', userid: $localStorage.userid, message: $scope.data.desire }).then(function(result) {
+               
+               if (result.data.status == "success!") {
+                 $state.go('tab.profile');
+
+               }
+               else {
+
+                 alert('Failed to Post');
+               }
+           }, function(error) {
+               alert("There was a problem posting your desire.");
+               console.log(error);
+           });
+      }
+      
     }
 })
 
-.controller('PostGratitudeCtrl', function($scope, $ionicPopup, $state) {
+.controller('PostGratitudeCtrl', function($scope, $ionicPopup, $state, $localStorage, $http) {
     $scope.data = {};
-
     $scope.postGratitude = function() {
-        //LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-            $state.go('tab.postGratitude');
-        //})
+  if($scope.data.gratitude == ""){
+        alert("Please Enter Gratitude");
+      }
+      else {
+        $http.post("http://104.236.249.215:3000/makepost", { type: 'gratitude', userid: $localStorage.userid, message: $scope.data.desire }).then(function(result) {
+               
+               if (result.data.status == "success!") {
+                 $state.go('tab.profile');
+
+               }
+               else {
+
+                 alert('Failed to Post');
+               }
+           }, function(error) {
+               alert("There was a problem posting your gratitude.");
+               console.log(error);
+           });
+      }
+      
     }
 })
 
-.controller('PostChallengeCtrl', function($scope, $ionicPopup, $state) {
+.controller('PostChallengeCtrl', function($scope, $ionicPopup, $state, $localStorage, $http) {
     $scope.data = {};
+    $scope.postGratitude = function() {
+  if($scope.data.gratitude == ""){
+        alert("Please Enter Gratitude");
+      }
+      else {
+        $http.post("http://104.236.249.215:3000/makepost", { type: 'gratitude', userid: $localStorage.userid, message: $scope.data.desire }).then(function(result) {
+               
+               if (result.data.status == "success!") {
+                 $state.go('tab.profile');
 
-    $scope.postChallenge = function() {
-        //LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-            $state.go('tab.postChallenge');
-        //})
+               }
+               else {
+
+                 alert('Failed to Post');
+               }
+           }, function(error) {
+               alert("There was a problem posting your gratitude.");
+               console.log(error);
+           });
+      }
+      
     }
 })
 
